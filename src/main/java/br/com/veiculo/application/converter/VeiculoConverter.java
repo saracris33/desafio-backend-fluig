@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.veiculo.application.command.AlterarVeiculoCommand;
 import br.com.veiculo.application.command.IncluirVeiculoCommand;
 import br.com.veiculo.application.representation.VeiculoRepresentation;
 import br.com.veiculo.domain.entity.Veiculo;
@@ -20,6 +21,10 @@ public class VeiculoConverter {
 	
 	public Veiculo toDomain(IncluirVeiculoCommand command) {
 		return modelMapper.map(command, Veiculo.class);
+	}
+	
+	public void copyToDomainObject(AlterarVeiculoCommand command, Veiculo dominio) {
+		modelMapper.map(command, dominio);
 	}
 	
 	

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.veiculo.domain.entity.Veiculo;
 import br.com.veiculo.domain.repository.VeiculoRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,14 +22,22 @@ public class VeiculoService {
 		return repository.buscaTodos();
 	}
 	
-	public Veiculo buscaPorId(final Long idVeiculo) {
+	public Veiculo buscaOuFalha(final Long idVeiculo) {
 		return repository.buscaOuFalha(idVeiculo);
 	}
 	
+	@Transactional
 	public Veiculo salva(final Veiculo veiculo) {
 		log.info("Salvando novo veiculo validado");
 		Veiculo veiculoSalvo = repository.adiciona(veiculo);
 		return veiculoSalvo;
+	}
+	
+	@Transactional
+	public void excluir(Long idVeiculo) {
+		log.info("Excluindo veiculo existente");
+		final Veiculo existente = repository.buscaOuFalha(idVeiculo);
+		repository.remove(existente);
 	}
 	
 }

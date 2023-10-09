@@ -13,31 +13,35 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Schema(name="Incluir Veiculo", description = "Representação de uma inclusão de veiculo")
-public class IncluirVeiculoCommand {
+@Schema(name="Alterar Veiculo", description = "Representação de uma alteração de veiculo")
+public class AlterarVeiculoCommand {
 	
-	@Schema(description = "Nome do Veículo", example = "Honda HRV")
+	@Schema(description = "Informe o identificador", example = "1")
+	@NotNull
+	private Long id;
+	
+	@Schema(description = "Nome do Veículo", example = "Hyundai HB20")
 	@NotBlank
 	private String nome;
 	
-	@Schema(description = "Informe a marca do Veículo", example = "Honda")
+	@Schema(description = "Informe a marca do Veículo", example = "Hyundai")
 	@NotBlank
 	private String marca;
 	
-	@Schema(description = "Informe o modelo do Veículo", example = "HRV")
+	@Schema(description = "Informe o modelo do Veículo", example = "HB20")
 	@NotBlank
 	private String modelo;
-
+	
 	@NotNull
 	@PastOrPresent
 	private LocalDate dataFabricacao;
 	
-	@Schema(description = "Informe o consumo médio na cidade (KM/L)", example = "9.2")
+	@Schema(description = "Informe o consumo médio na cidade (KM/L)", example = "11.5")
     @NotNull
     @PositiveOrZero
 	private BigDecimal consumoCidade;
 	
-	@Schema(description = "Informe o consumo médio na rodovia (KM/L)", example = "10.9")
+	@Schema(description = "Informe o consumo médio na rodovia (KM/L)", example = "13")
 	@NotNull
 	@PositiveOrZero
 	private BigDecimal consumoRodovia;

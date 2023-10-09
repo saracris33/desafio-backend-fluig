@@ -7,3 +7,6 @@ API Rest para previsão de consumo de combustível de veículos utilizados para 
 ```
 $ docker container run -d -p 3307:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes --name veiculo-mysql mysql:8.0
 ```
+
+
+- Documentação Swagger: [http://localhost:8081/veiculo-api/swagger-ui.html](http://localhost:8081/veiculo-api/swagger-ui/index.html)

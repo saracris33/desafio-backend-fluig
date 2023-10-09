@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: veiculo-api
+  datasource: 
+    url: jdbc:mysql://localhost:3307/db_veiculo?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: 
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate: 
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect  
+  jackson: 
+    deserialization: 
+      fail-on-unknown-properties: true
+      fail-on-ignored-properties: true
+      
+
+# CONFIGURA SERVIDOR    
+server:
+  port: ${SERVER_PORT:8081}
+  servlet:
+    context-path: /veiculo-api
+  
+
+# CONFIGURA SWAGGER SPRINGDOC 
+springdoc:
+  api-docs:
+    path: /v3/api-docs #URL usada ​​para carregar o swagger ui deste serviço pelo gateway de API 
+  swagger-ui:
+    path: /swagger-ui.html

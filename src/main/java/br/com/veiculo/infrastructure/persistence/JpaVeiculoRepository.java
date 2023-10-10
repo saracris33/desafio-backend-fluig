@@ -24,11 +24,6 @@ public class JpaVeiculoRepository implements VeiculoRepository {
 	}
 
 	@Override
-	public void remove(Veiculo veiculo) {
-		this.springRepository.delete(veiculo);
-	}
-
-	@Override
 	public Veiculo buscaOuFalha(Long id) {
 		return this.springRepository.findById(id)
 				.orElseThrow(() -> new VeiculoNaoEncontradoException("ID", id));
@@ -37,6 +32,12 @@ public class JpaVeiculoRepository implements VeiculoRepository {
 	@Override
 	public List<Veiculo> buscaTodos() {
 		return this.springRepository.findAll();
+	}
+	
+	@Override
+	@Transactional
+	public void remove(Veiculo veiculo) {
+		this.springRepository.delete(veiculo);
 	}
 
 

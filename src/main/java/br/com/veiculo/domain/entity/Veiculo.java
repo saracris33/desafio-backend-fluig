@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -13,6 +15,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -56,5 +59,9 @@ public class Veiculo implements Serializable {
 	@UpdateTimestamp
 	@Column(name = "DATA_ALTERACAO", columnDefinition = "datetime", nullable = false)
 	private LocalDateTime dataAlteracao;
+	
+	
+	@OneToMany(mappedBy = "veiculo")
+	private List<GastoCombustivel> gastosCombustivel = new ArrayList<>();
 
 }

@@ -50,7 +50,7 @@ public class GastoCombustivel implements Serializable {
 	
 
 	
-	public void calculaQuantidadeLitrosTotalGasto() {
+	private void calculaQuantidadeLitrosTotalGasto() {
 		final BigDecimal consumoVeiculoCidade = this.getVeiculo().getConsumoCidade();
 		final BigDecimal kmPercorridoCidade = BigDecimal.valueOf(this.getKmPercursoCidade());
 		final BigDecimal quantidadeCidade =  kmPercorridoCidade.divide(consumoVeiculoCidade, 2, RoundingMode.HALF_UP);
@@ -64,9 +64,7 @@ public class GastoCombustivel implements Serializable {
 		this.setQuantidadeTotalGasto(quantidadeTotalGasolina.setScale(0, RoundingMode.HALF_UP).longValue());
 	}
 	
-	/*
-	 * TOTAL_GASTO = CONSUMO_MEDIO * VALOR_GASOLINA
-	 */
+
     public void calculaValorTotalGasto() {
     	this.calculaQuantidadeLitrosTotalGasto();
     	final BigDecimal quantidadeLitrosTotalGasto = BigDecimal.valueOf(this.getQuantidadeTotalGasto());

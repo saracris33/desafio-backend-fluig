@@ -14,9 +14,7 @@ import br.com.veiculo.application.command.CalcularGastoCombustivelCommand;
 import br.com.veiculo.application.converter.GastoCombustivelConverter;
 import br.com.veiculo.application.representation.GastoCombustivelRepresentation;
 import br.com.veiculo.application.service.GastoCombustivelService;
-import br.com.veiculo.application.service.VeiculoService;
 import br.com.veiculo.domain.entity.GastoCombustivel;
-import br.com.veiculo.domain.entity.Veiculo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -32,7 +30,7 @@ public class GastoCombustivelController {
 	
 	private final GastoCombustivelService service;
 	
-	private final VeiculoService serviceVeiculo;
+
 	
 	private final GastoCombustivelConverter converter;
 	
@@ -42,20 +40,7 @@ public class GastoCombustivelController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public List<GastoCombustivelRepresentation> calculaGasto(@RequestBody @Valid CalcularGastoCombustivelCommand command) {
 		log.info("Calculando gasto combustivel");
-		final List<Veiculo> veiculos = serviceVeiculo.buscaTodos();
-	
-		for(Veiculo veiculo: veiculos) {
-			GastoCombustivel gasto = new GastoCombustivel();
-			gasto.setVeiculo(veiculo);
-			gasto.setKmPercursoCidade(command.getKmPercursoCidade());
-			gasto.setKmPercursoRodovia(command.getKmPercursoRodovia());
-            gasto.setValorGasolina(command.getValorGasolina());
-            gasto.calculaValorTotalGasto();
-            service.salva(gasto);
-		}
-		final List<GastoCombustivel> gastos = service.buscaTodos();
-		
-		
+		final List<GastoCombustivel>  gastos = service.obtemListaRanqueada(command);
 		return converter.toCollectionRepresentation(gastos);
 
 	}

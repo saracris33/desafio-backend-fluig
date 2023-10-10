@@ -17,6 +17,9 @@ spring:
     deserialization: 
       fail-on-unknown-properties: true
       fail-on-ignored-properties: true
+  docker:
+    compose: # Quando desabilitado necessario crio o container mysql para rodar aplicacao: docker container run -d -p 3307:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes --name veiculo-mysql mysql:8.0
+      enabled: ${DOCKER_COMPOSE_ENABLED:true}
       
 
 # CONFIGURA SERVIDOR    

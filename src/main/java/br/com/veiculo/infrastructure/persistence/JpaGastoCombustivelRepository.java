@@ -29,7 +29,7 @@ public class JpaGastoCombustivelRepository implements GastoCombustivelRepository
 
 	@Override
 	public List<GastoCombustivel> buscaTodos() {
-		return this.springRepository.findAll();
+		return this.springRepository.buscaTodosEmOrdemCrescentePorValorCombustivel();
 	}
 
 }

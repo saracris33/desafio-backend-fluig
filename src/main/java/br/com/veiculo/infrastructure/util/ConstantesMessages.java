@@ -10,8 +10,8 @@ public class ConstantesMessages {
 	
 
 
-	public static final String ERRO_VALIDACAO_NULO = "incra.pagamentos.erro.validacao.nulo";
-	public static final String ERRO_VALIDACAO_VAZIO = "incra.pagamentos.erro.validacao.vazio";
+	public static final String ERRO_VALIDACAO_NULO = "veiculo.api.erro.validacao.nulo";
+	public static final String ERRO_VALIDACAO_VAZIO = "veiculo.api.erro.validacao.vazio";
 
 
 }

@@ -2,7 +2,7 @@ spring:
   application:
     name: veiculo-api
   datasource: 
-    url: jdbc:mysql://localhost:3307/db_veiculo?createDatabaseIfNotExist=true&serverTimezone=UTC
+    url: jdbc:mysql://${DB_HOST:localhost}:3307/db_veiculo?createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
     password: 
   jpa:
@@ -22,6 +22,7 @@ spring:
 # CONFIGURA SERVIDOR    
 server:
   port: ${SERVER_PORT:8081}
+  address: 0.0.0.0
   servlet:
     context-path: /veiculo-api
   

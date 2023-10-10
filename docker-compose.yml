@@ -1,0 +1,37 @@
+version: "3.3"
+
+
+networks:
+  veiculo-network:
+    driver: bridge
+    name: veiculo-network
+    
+
+services:
+  veiculo-mysql:
+    image: mysql:8.0
+    container_name: veiculo-mysql
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3307:3306"
+    networks:
+      - veiculo-network
+
+  veiculo-api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: veiculo-api
+    restart: always
+    environment:
+      DB_HOST: veiculo-mysql
+    ports:
+      - "8081:8081"
+    networks:
+      - veiculo-network
+    depends_on:
+      - veiculo-mysql
+
+      

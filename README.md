@@ -1,12 +1,16 @@
-# desafio-backend-fluig
+# Desafio-backend-fluig
 API Rest para previsão de consumo de combustível de veículos utilizados para entrega de produtos de uma empresa 
 
 
-- Comando para criar um container mysql que sera utilizado pela aplicação
+
+#### Instruções para execucao da aplicação
+- Instalar docker compose: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
+
+- Executar comando para iniciar aplicação utilizando docker compose
 
 ```
-$ docker container run -d -p 3307:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes --name veiculo-mysql mysql:8.0
-```
+$ docker compose up -d
 
+```
 
 - Documentação Swagger: [http://localhost:8081/veiculo-api/swagger-ui.html](http://localhost:8081/veiculo-api/swagger-ui/index.html)

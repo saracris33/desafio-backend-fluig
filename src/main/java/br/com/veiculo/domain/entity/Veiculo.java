@@ -15,6 +15,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -59,6 +60,11 @@ public class Veiculo implements Serializable {
 	@UpdateTimestamp
 	@Column(name = "DATA_ALTERACAO", columnDefinition = "datetime", nullable = false)
 	private LocalDateTime dataAlteracao;
+	
+	@Lob 
+	//@Basic(fetch= FetchType.LAZY) 
+    @Column(name = "imagem", columnDefinition="LONGTEXT")
+	private String imagem;
 	
 	
 	@OneToMany(mappedBy = "veiculo")

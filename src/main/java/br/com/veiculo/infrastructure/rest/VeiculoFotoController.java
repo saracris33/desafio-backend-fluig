@@ -78,12 +78,12 @@ public class VeiculoFotoController {
 			e.printStackTrace();
 		}
    
-    	var headers = new HttpHeaders();
-		headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=foto-carro.jpeg");
+    	//var headers = new HttpHeaders();
+		//headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=foto-carro.jpeg");
 		
 		return ResponseEntity.ok()
 				.contentType(MediaType.IMAGE_JPEG)
-				.headers(headers)
+				//.headers(headers)
 				.body(arrayBytesDecode);
 	}
 

@@ -16,7 +16,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: db_veiculo
     ports:
-      - "3307:3306"
+      - "3306:3306"
     networks:
       - veiculo-network
 

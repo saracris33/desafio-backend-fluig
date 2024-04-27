@@ -2,7 +2,7 @@ spring:
   application:
     name: veiculo-api
   datasource: 
-    url: jdbc:mysql://${DB_HOST:localhost}:3307/db_veiculo?createDatabaseIfNotExist=true&serverTimezone=UTC
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/db_veiculo?createDatabaseIfNotExist=true&serverTimezone=UTC
     username: root
     password: 
   jpa:
